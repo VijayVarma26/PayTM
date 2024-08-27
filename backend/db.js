@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-mongoose.connect("mongodb+srv://vijayvarmade:ZwVC2MeVvJ9ijv6j@cluster0.2ex95ch.mongodb.net/todos")
+mongoose.connect("mongodb+srv://vijayvarmade:ZwVC2MeVvJ9ijv6j@cluster0.2ex95ch.mongodb.net/paytm")
 
 const userSchema = mongoose.Schema({
     username : {
@@ -33,6 +33,6 @@ const userSchema = mongoose.Schema({
 
 const User = mongoose.model('User', userSchema)
 
-model.exports = {
+module.exports = {
     User
 }

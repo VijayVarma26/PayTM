@@ -46,13 +46,13 @@ router.post("/signup" , async (req,res) =>{
 });
 
 const signinBody = zod.object({
-    username: zod.email(),
+    username: zod.string().email(),
     password: zod.string(),
 });
 
 router.post("/signin", async (req, res) => {
     const body = req.body;
-    const success = signinBody.safeParse(req.body)
+    const {success} = signinBody.safeParse(req.body)
     if(!success){
         return res.body({
             message: "Incorrect Username or Password"
@@ -82,10 +82,10 @@ const updateBody = zod.object({
     password: zod.string().optional(),
     fistName: zod.string().optional(),
     lastName: zod.string().optional()
-})
+});
 
 router.put("/", authMiddleware,async (req,res) =>{
-    const success = updateBody.safeParse(req.body)
+    const {success} = updateBody.safeParse(req.body)
     if(!success){
         res.status(411).json({
             message: "Error while updating information"
